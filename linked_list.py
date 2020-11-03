@@ -63,3 +63,13 @@ class LinkedList(object):
                 self.tail = previous_node
         else:
             print("The playlist is empty!")
+    def find(self,item):
+      """ A method that takes in one parameter item and returns True if found and False if not """
+      current_node = self.head
+      isFound = False
+      while current_node and isFound == False:
+        if current_node.data == item:
+          isFound = True
+        current_node = current_node.next
+      return isFound
+
