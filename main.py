@@ -22,3 +22,5 @@ music_playlist.print_songs()
 
 print('\nFind song <Thursday> :', music_playlist.find('Thursday'))
 print('Find song <Fast Car> :', music_playlist.find('Fast Car'))
+
+music_playlist.reverse()

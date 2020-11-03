@@ -1,8 +1,9 @@
 class Node(object):
-    def __init__(self, data):
+    def __init__(self, data, next=None, prev=None):
         """ Initialize a new node with the given data """
         self.data = data
-        self.next = None
+        self.next = next
+        self.prev = prev
 
 
 class LinkedList(object):
@@ -17,6 +18,7 @@ class LinkedList(object):
         if self.head == None:  # Check if the linkedlist is empty
             self.head = new_node
         else:
+            new_node.prev = self.tail
             self.tail.next = new_node
         self.tail = new_node
 
@@ -27,6 +29,7 @@ class LinkedList(object):
             self.head = new_node
             self.tail = new_node
         else:
+            self.head.prev = new_node
             new_node.next = self.head
             self.head = new_node
 
@@ -44,6 +47,7 @@ class LinkedList(object):
         """ A method to delete an item from the beginning of the linked list """
         if self.head:
             self.head = self.head.next
+            self.head.prev = None
         else:
             print("The playlist is empty!")
 
@@ -59,17 +63,24 @@ class LinkedList(object):
                 while current_node.next != None:
                     previous_node = current_node
                     current_node = current_node.next
+                current_node.prev = None
                 previous_node.next = None
                 self.tail = previous_node
         else:
             print("The playlist is empty!")
-    def find(self,item):
-      """ A method that takes in one parameter item and returns True if found and False if not """
-      current_node = self.head
-      isFound = False
-      while current_node and isFound == False:
-        if current_node.data == item:
-          isFound = True
-        current_node = current_node.next
-      return isFound
 
+    def find(self, item):
+        """ A method that takes in one parameter item and returns True if found and False if not """
+        current_node = self.head
+        isFound = False
+        while current_node and isFound == False:
+            if current_node.data == item:
+                isFound = True
+            current_node = current_node.next
+        return isFound
+
+    def reverse(self):
+        current_node = self.tail
+        while current_node:
+            print(current_node.data)
+            current_node = current_node.prev
