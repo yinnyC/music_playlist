@@ -26,3 +26,12 @@ class  LinkedList(object):
     else:
       new_node.next = self.head
       self.head = new_node
+  def print_songs(self):
+    """ A method to print out all the songs in your playlist """
+    if !self.head:
+      print("The playlist is empty!")
+    else:
+      current_node = self.head
+      while current_node:
+        print(current_node.data)
+        current_node = current_node.next
