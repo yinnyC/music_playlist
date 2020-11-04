@@ -104,7 +104,15 @@ class LinkedList(object):
             print("The song is not in the playlist")
 
     def reverse(self):
-        current_node = self.tail
+        """ A method that will reverse the linked list in place """
+        temp_node = None
+        current_node = self.head
         while current_node:
-            print(current_node.data)
+            temp_node = current_node.prev
+            current_node.prev = current_node.next
+            current_node.next = temp_node
             current_node = current_node.prev
+        if temp_node:
+            self.tail = self.head
+            self.tail.prev = self.head.next
+            self.head = temp_node.prev

@@ -2,27 +2,25 @@ from linked_list import LinkedList
 
 # Create a music playlist
 music_playlist = LinkedList()
-# Append 3 songs
+print("----- Append 3 songs ----")
 music_playlist.append("Fast Car")
 music_playlist.append("Sweet Disposition")
 music_playlist.append("Underwater")
-print("----- Browse Music Playlist ----")
 music_playlist.print_songs()
-# Prepend 2 songs
+print("----- Prepend 3 songs ----")
 music_playlist.prepend('Some Nights')
 music_playlist.prepend('Thursday')
-print("----- Browse Music Playlist ----")
 music_playlist.print_songs()
-# Delete the first and the last song
+print("----- Reverse Music Playlist ----")
+music_playlist.reverse()
+music_playlist.print_songs()
+print("----- Delete The First and The Last Song ----")
 music_playlist.delete_from_head()
 music_playlist.delete_from_tail()
-print("----- Browse Music Playlist ----")
 music_playlist.print_songs()
-# Find songs
 print("----- Find songs ----")
 print('\nFind song <Thursday> :', music_playlist.find('Thursday'))
 print('Find song <Fast Car> :', music_playlist.find('Fast Car'))
-
 print("----- Delete songs ----")
 music_playlist.delete('Sweet Disposition')
 music_playlist.delete('Fast Car')
