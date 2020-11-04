@@ -19,8 +19,12 @@ music_playlist.delete_from_tail()
 print("----- Browse Music Playlist ----")
 music_playlist.print_songs()
 # Find songs
-
+print("----- Find songs ----")
 print('\nFind song <Thursday> :', music_playlist.find('Thursday'))
 print('Find song <Fast Car> :', music_playlist.find('Fast Car'))
 
-music_playlist.reverse()
+print("----- Delete songs ----")
+music_playlist.delete('Sweet Disposition')
+music_playlist.delete('Fast Car')
+music_playlist.delete('Fast Car')
+music_playlist.print_songs()

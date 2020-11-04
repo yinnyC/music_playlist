@@ -46,8 +46,12 @@ class LinkedList(object):
     def delete_from_head(self):
         """ A method to delete an item from the beginning of the linked list """
         if self.head:
-            self.head = self.head.next
-            self.head.prev = None
+            if self.head == self.tail:  # If there is only one node in the list
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
+                self.head.prev = None
         else:
             print("The playlist is empty!")
 
@@ -78,6 +82,26 @@ class LinkedList(object):
                 isFound = True
             current_node = current_node.next
         return isFound
+
+    def delete(self, item):
+        """ A method that can delete an item anywhere in the list """
+        if self.find(item):  # Check if the Item is in the list
+            current_node = self.head
+            if current_node.data == item:  # If the item is in the head node
+                self.delete_from_head()
+                return
+            while current_node.next != None:  # Check the nodes between head and tail
+                if current_node.data == item:  # Connect previous_node to next_node
+                    next_node = current_node.next
+                    previous_node = current_node.prev
+                    previous_node.next = next_node
+                    next_node.prev = previous_node
+                    return
+                current_node = current_node.next
+            # If iterate through the nodes in the middle without finding the node, the target it's tail
+            self.delete_from_tail()
+        else:
+            print("The song is not in the playlist")
 
     def reverse(self):
         current_node = self.tail
